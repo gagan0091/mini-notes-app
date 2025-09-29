@@ -13,7 +13,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/register', { username, password });
+      const res = await axios.post('https://mini-notes-app-rjui.onrender.com/api/register', { username, password });
       localStorage.setItem('token', res.data.token);
       router.push('/dashboard');
     } catch (err) {

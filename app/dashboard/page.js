@@ -20,7 +20,7 @@ export default function Dashboard() {
       const token = localStorage.getItem('token');
       if (!token) return router.push('/login');
 
-      const res = await axios.get(`http://localhost:5000/api/notes?page=${page}&limit=5&search=${search}`, {
+      const res = await axios.get(`https://mini-notes-app-rjui.onrender.com/api/notes?page=${page}&limit=5&search=${search}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes(res.data.notes);
@@ -43,11 +43,11 @@ export default function Dashboard() {
     const token = localStorage.getItem('token');
     try {
       if (editId) {
-        await axios.put(`http://localhost:5000/api/notes/${editId}`, { title, content }, {
+        await axios.put(`https://mini-notes-app-rjui.onrender.com/api/notes/${editId}`, { title, content }, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
-        await axios.post('http://localhost:5000/api/notes', { title, content }, {
+        await axios.post('https://mini-notes-app-rjui.onrender.com/api/notes', { title, content }, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }
@@ -69,7 +69,7 @@ export default function Dashboard() {
   const handleDelete = async (id) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/notes/${id}`, {
+      await axios.delete(`https://mini-notes-app-rjui.onrender.com/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchNotes();
